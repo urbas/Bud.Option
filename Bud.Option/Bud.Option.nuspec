@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Bud.Option</id>
+    <version>1.0.0-rc1</version>
+    <title>Bud.Option</title>
+    <authors>Matej Urbas</authors>
+    <owners>Matej Urbas</owners>
+    <licenseUrl>https://github.com/urbas/Bud.Option/blob/master/LICENCE.md</licenseUrl>
+    <projectUrl>https://github.com/urbas/Bud.Option</projectUrl>
+    <iconUrl>https://ci.appveyor.com/api/projects/status/eh8fww5kc8lgrvpf/branch/master</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Bud.Option provides the Bud.Option type.</description>
+    <releaseNotes>First release version.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Bud.Option optional</tags>
+  </metadata>
+  <files>
+    <file src="bin/Debug/Bud.Option.dll" target="lib/net46" />
+  </files>
+</package>
