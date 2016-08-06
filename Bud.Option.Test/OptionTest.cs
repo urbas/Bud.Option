@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
@@ -20,15 +19,39 @@ namespace Bud {
       => IsFalse(Some(42).Equals(Some(9001)));
 
     [Test]
-    public void Hash_code_equals_for_equal_values()
+    public void Nones_of_different_types_are_not_equal()
+      => AreNotEqual(None<int>(), None<string>());
+
+    [Test]
+    public void Nones_of_same_type_are_equal()
+      => AreEqual(None<int>(), None<int>());
+
+    [Test]
+    public void Some_of_equal_values_are_equal()
       => AreEqual(Some(42), Some(42));
 
     [Test]
-    public void ToString_returns_none()
+    public void Some_of_different_values_are_not_equal()
+      => AreNotEqual(Some(42), Some(9001));
+
+    [Test]
+    public void Some_of_different_types_are_not_equal()
+      => AreNotEqual(Some(42), Some<long>(42));
+
+    [Test]
+    public void Hash_code_equals_for_equal_values()
+      => AreEqual(Some(42).GetHashCode(), Some(42).GetHashCode());
+
+    [Test]
+    public void Hash_code_does_not_equal_when_values_different()
+      => AreNotEqual(Some(42).GetHashCode(), Some(9001).GetHashCode());
+
+    [Test]
+    public void ToString_returns_none_with_type_information()
       => AreEqual("None<System.Int32>", None<int>().ToString());
 
     [Test]
-    public void ToString_returns_some_with_value()
+    public void ToString_returns_some_with_value_and_type_information()
       => AreEqual("Some<System.Int32>(42)", Some(42).ToString());
 
     [Test]
@@ -98,17 +121,6 @@ namespace Bud {
       => AreEqual(Some(42), Some("42").Map(int.Parse));
 
     [Test]
-    public void Gather_returns_values()
-      => AreEqual(new[] {1, 2},
-                  new[] {None<int>(), Some(1), None<int>(), Some(2)}
-                    .Gather());
-
-    [Test]
-    public void Gather_filters_and_selects()
-      => AreEqual(new[] {"1", "3"},
-                  new[] {1, 2, 3, 4}.Gather(number => number % 2 == 1 ? Some(number.ToString()) : None<string>()));
-
-    [Test]
     public void Flatten_returns_none_when_given_a_nested_none()
       => AreEqual(None<int>(),
                   Some(None<int>()).Flatten());
@@ -124,11 +136,6 @@ namespace Bud {
                   Some(Some(42)).Flatten());
 
     [Test]
-    public void Get_on_empty_dictionary_returns_None()
-      => AreEqual(None<int>(), new Dictionary<int, int>().Get(42));
-
-    [Test]
-    public void Get_on_existing_key_in_dictionary_returns_Some()
-      => AreEqual(Some(1), new Dictionary<int, int> {{42, 1}}.Get(42));
+    public void None_equals_to_default() => AreEqual(default(Option<int>), None<int>());
   }
 }

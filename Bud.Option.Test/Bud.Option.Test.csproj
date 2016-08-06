@@ -46,6 +46,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DictionaryOptionExtensionsTest.cs" />
+    <Compile Include="EnumerableOptionExtensionsTest.cs" />
     <Compile Include="OptionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
