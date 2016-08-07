@@ -9,16 +9,9 @@ __Table of contents__
 
 ## About
 
-Bud.Option contains a single type:
+Bud.Option is a struct that can either contain a single value or be empty. It can be used as an alternative to `null`.
 
-```csharp
-namespace Bud {}
-  struct Option<T> {
-    ...
-  }
-}
-```
+Bud option is a .NET implementation of the "option type". See [Wikipedia](https://en.wikipedia.org/wiki/Option_type) for more information.
 
-See [docstrings in sources](Bud.Option/Option.cs#L6) for more information.
+Also, [docstrings in sources](Bud.Option/Option.cs#L6) contain more information about the API of Bud.Option.
 
-[Wikipedia](https://en.wikipedia.org/wiki/Option_type) has a nice article on the `option` type.
